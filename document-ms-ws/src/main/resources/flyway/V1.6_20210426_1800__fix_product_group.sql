@@ -1,0 +1,1 @@
+ALTER TABLE `product_group` CHANGE COLUMN `code` `code` VARCHAR(20) NOT NULL COLLATE 'utf8mb4_bin' AFTER `id`;

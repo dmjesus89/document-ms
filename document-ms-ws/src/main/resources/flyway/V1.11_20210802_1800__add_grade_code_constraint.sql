@@ -1,0 +1,1 @@
+ALTER TABLE `grade` ADD UNIQUE INDEX `code` (`code`);

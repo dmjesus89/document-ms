@@ -1,0 +1,18 @@
+CREATE TABLE IF NOT EXISTS tenant (
+    id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    description VARCHAR(45) NOT NULL,
+    comment VARCHAR(255) NULL,
+    is_enabled TINYINT(1) NOT NULL,
+    PRIMARY KEY (id))
+ENGINE = InnoDB;
+
+
+CREATE TABLE IF NOT EXISTS tenant_host(
+   tenant_id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+   url  VARCHAR(255) NOT NULL,
+   user  VARCHAR(45) NOT NULL,
+   password  VARCHAR(45) NOT NULL,
+   comment  VARCHAR(255) NULL,
+  PRIMARY KEY ( tenant_id ),
+  CONSTRAINT fk_tenant_setting_tenant1 FOREIGN KEY (tenant_id) REFERENCES tenant (id) ON DELETE NO ACTION ON UPDATE NO ACTION)
+ENGINE = InnoDB;

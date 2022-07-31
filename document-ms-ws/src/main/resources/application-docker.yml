@@ -1,0 +1,75 @@
+micronaut:
+  application:
+    name: document-ms
+  router:
+    static-resources:
+      swagger:
+        paths: classpath:META-INF/swagger
+        mapping: /swagger/**
+  server:
+    thread-selection: auto
+    port: 51054
+    ssl:
+      enabled: true
+      port: 51055
+    cors:
+      enabled: true
+  multitenancy:
+    tenantresolver:
+      httpheader:
+        enabled: true
+  security:
+    enabled: false
+datasources:
+  default:
+    url: jdbc:mysql://${BD_IP:mariadb}:${BD_PORT:3306}/${BD_URL:document}?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=Europe/Lisbon&allowPublicKeyRetrieval=true
+    username: ${BD_USER:awsuser}
+    password: ${BD_PWD:devpasswd++}
+    driverClassName: com.mysql.cj.jdbc.Driver
+    autoCommit: false
+jpa:
+  default:
+    properties:
+      hibernate:
+        show_sql: false
+        format_sql: false
+rabbitmq:
+  uri: amqp://192.168.1.33:5672
+jackson:
+  serialization-inclusion: NON_ABSENT
+  serialization:
+    writeDatesAsTimestamps: false
+  deserialization:
+    failOnUnknownProperties: false
+flyway:
+  datasources:
+    default:
+      locations: classpath:flyway
+      table: _flyway_document_history
+      validate-on-migrate: false
+      baseline-on-migrate: true
+endpoints:
+  info:
+    enabled: true
+    sensitive: false
+    git:
+      enabled: false
+  health:
+    enabled: true
+    details-visible: ANONYMOUS
+    sensitive: false
+    disk-space:
+      enabled: false
+  loggers:
+    enabled: true
+    write-sensitive: false
+  metrics:
+    enabled: true
+    sensitive: false
+petrotec:
+  multitenant:
+    enabled: false
+    schema-name: 'document'
+  mqtt:
+    server:
+      host: "mosquitto"

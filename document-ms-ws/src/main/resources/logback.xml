@@ -1,0 +1,58 @@
+<configuration>
+    <property name="log-path" value="logs/document-ms-ws.log"/>
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <withJansi>false</withJansi>
+        <!-- encoders are assigned the type
+             ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+        <encoder>
+            <pattern>%cyan(%d{HH:mm:ss.SSS}) %gray([%thread]) %highlight(%-5level) %magenta(%logger{36}) - %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log-path}</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>./logs/document-ms-ws.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+            <!-- each archived file, size max 10MB -->
+            <maxFileSize>10MB</maxFileSize>
+            <!-- total size of all archive files, if total size > 20GB, it will delete old archived file -->
+            <totalSizeCap>100MB</totalSizeCap>
+            <!-- 60 days to keep -->
+            <maxHistory>60</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>[%d{HH:mm:ss.SSS}] [%thread] [%-5level] [%logger{36}] - %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+
+    <appender name="ASYNC-CONSOLE" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="CONSOLE"/>
+        <neverBlock>true</neverBlock>
+    </appender>
+
+    <appender name="ASYNC-FILE" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="FILE"/>
+        <neverBlock>false</neverBlock>
+    </appender>
+
+    <!-- <logger name="org.hibernate.SQL" level="INFO" /> -->
+    <!-- <logger name="org.hibernate.type" level="INFO" /> -->
+    <!-- <logger name="org.hibernate" level="DEBUG"/> -->
+    <!-- <logger name="io.micronaut.core.beans" level="INFO" />-->
+    <!-- <logger name="io.micronaut.context" level="INFO" />-->
+    <!-- <logger name="org.hibernate.transaction" level="INFO" />-->
+    <!-- <logger name="org.springframework.transaction" level="INFO" />-->
+    <!-- <logger name="io.micronaut.http.client" level="TRACE" /> >-->
+    <!-- <logger name="io.micronaut.management" level="TRACE" /> >-->
+    <!-- <logger name="io.micronaut.context.lifecycle" level="TRACE" /> &lt;!&ndash; Show bean trace &ndash;&gt;-->
+
+
+    <root level="INFO">
+        <appender-ref ref="ASYNC-CONSOLE"/>
+        <appender-ref ref="ASYNC-FILE"/>
+    </root>
+</configuration>

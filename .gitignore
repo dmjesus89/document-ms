@@ -1,0 +1,36 @@
+logs/
+target/
+bin/
+*.log
+!.mvn/wrapper/maven-wrapper.jar
+document-ms-ws/src/main/resources/application-local.properties
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/build/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### vscode ###
+.vscode/
+.history/
+
+/document-ms-ws/dependency-reduced-pom.xml
+/document-ms-ws/src/main/resources/application-local.yml
