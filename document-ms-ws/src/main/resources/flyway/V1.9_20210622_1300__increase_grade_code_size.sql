@@ -1,1 +1,0 @@
-ALTER TABLE `grade` CHANGE COLUMN `code` `code` VARCHAR(45) NOT NULL COLLATE 'utf8mb4_general_ci' AFTER `id`;

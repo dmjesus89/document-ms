@@ -1,1 +1,0 @@
-ALTER TABLE `site_device_warehouse` CHANGE COLUMN `fcc_warehouse_code` `fcc_warehouse_code` VARCHAR(36) NULL AFTER `product_id`;

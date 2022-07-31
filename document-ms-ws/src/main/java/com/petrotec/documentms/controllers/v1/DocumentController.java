@@ -1,4 +1,4 @@
-package com.petrotec.sitemsws.controllers.v1;
+package com.petrotec.documentms.controllers.v1;
 
 import com.petrotec.api.BaseResponse;
 import com.petrotec.api.PageAndSorting;

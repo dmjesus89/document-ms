@@ -1,1 +1,0 @@
-ALTER TABLE `site_device_fuel_point_nozzle` ADD UNIQUE INDEX `nozzle_number` (`nozzle_number`, `site_device_id`);
